@@ -1,0 +1,72 @@
+# --- Sensitive ---
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.pkcs12
+*.pfx
+secrets.json
+config/auth.json
+
+# --- External Dependencies ---
+node_modules/
+jspm_packages/
+web_modules/
+venv/
+.venv/
+env/
+lib/
+lib64/
+vendor/
+packages/
+.claude/
+
+# --- Build Outputs & Compiled Code ---
+dist/
+build/
+out/
+target/
+bin/
+obj/
+*.exe
+*.dll
+*.so
+*.dylib
+*.pyc
+*.pyo
+*.class
+*.jar
+*.war
+
+# --- Code Editor & IDE Configurations ---
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln.docstates
+*.swp
+*~
+
+# --- Operating System Files ---
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --- Logs, Diagnostics & Caches ---
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.eslintcache
+.stylelintcache
+.sass-cache
+.cache/
+.parcel-cache
+.turbo/
