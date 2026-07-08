@@ -1,0 +1,21 @@
+This will be a space to find 
+projects I've worked on  in different 
+tabs including other websites, job 
+experiences, data analytics, creative work 
+(writing, music, and fiber arts), 
+religious stuff, etc. I want 
+to be able to use it as a tool 
+in interviews, like "look at all 
+the cool work I've done!"
+
+Color scheme: 
+earthy rainbow colors 
+- (look good in dark and light modes)
+Some of these colors and variations of them 
+(i.e. a darker and lighter shade of each for buttons, links, hover changes, and such): 
+#a54e4e, #c66b4e, #b88a44, #d19f54, 
+#537d52, #789977, #3a7899, #283382, #6e395e. 
+
+Fonts: 
+serif fonts for the body text,  
+titles and headings in a sans serif font (classy, not childish).

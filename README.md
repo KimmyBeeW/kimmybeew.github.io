@@ -2,6 +2,8 @@ This is a space to show off my many facets! Here you'll find projects I've worke
 
 There is an old idiom often attributed to William Shakespeare that goes, "A jack of all trades is a master of none, but oftentimes better than a master of one." I'd like to expand on that to say:
 
+---
+
 A Jack of all trades may not know how to fly, 
 nor how to build 50 stories of a building quite right, 
 but they know how to guess, how to try, how to fail.
