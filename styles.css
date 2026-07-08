@@ -345,7 +345,7 @@ main { padding-bottom: 5rem; }
 .timeline { position: relative; margin-top: 1rem; padding-left: 2.2rem; }
 .timeline::before {
   content: ""; position: absolute; left: 8px; top: 6px; bottom: 6px; width: 2px;
-  background: linear-gradient(var(--scarlet), var(--orange), var(--gold), var(--green), var(--green-soft), var(--blue), var(--indigo), var(--plum), var(--orchid));
+  background: linear-gradient(var(--scarlet), var(--red),var(--orange), var(--gold), var(--green), var(--green-soft), var(--blue), var(--indigo), var(--plum), var(--orchid));
   border-radius: 2px;
 }
 .t-item { position: relative; padding-bottom: 2.2rem; }
