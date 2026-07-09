@@ -322,6 +322,12 @@ main { padding-bottom: 5rem; }
 .card-links a { display: inline-flex; align-items: center; gap: .35rem; }
 .card-links a svg { width: 15px; height: 15px; }
 
+/* Data Science cards: the whole card is a click target for its FIRST link
+   (usually "Analysis"). Handled in script.js; these rules are just the cues. */
+#tab-data .card { cursor: pointer; }
+/* Hint that the card is clickable: title picks up the card's accent on hover. */
+#tab-data .card:hover h3 { color: var(--card-accent, var(--accent)); }
+
 /* -------------------------------------------------------------------- */
 /*  7. WEBSITES — visual grid with preview thumbnails                   */
 /* -------------------------------------------------------------------- */
