@@ -359,6 +359,16 @@ main { padding-bottom: 5rem; }
 .site-thumb img { transition: transform .4s var(--ease); }
 .site-body { padding: 1.3rem 1.4rem 1.5rem; }
 
+/* Resting color: each site card carries a soft tint of its own accent so the
+   color reads at a glance, not just on hover. */
+.site-card {
+  background: color-mix(in srgb, var(--card-accent) 5%, var(--surface));
+  border-color: color-mix(in srgb, var(--card-accent) 34%, var(--border));
+}
+.site-thumb { border-bottom-color: color-mix(in srgb, var(--card-accent) 34%, var(--border)); }
+.site-card .card-links a { color: var(--card-accent); }
+.site-card .card-links a:hover { color: color-mix(in srgb, var(--card-accent) 72%, var(--text)); }
+
 /* -------------------------------------------------------------------- */
 /*  8. TIMELINE (Professional Experience)                              */
 /* -------------------------------------------------------------------- */
