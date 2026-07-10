@@ -363,7 +363,7 @@ main { padding-bottom: 5rem; }
 .timeline { position: relative; margin-top: 1rem; padding-left: 2.2rem; }
 .timeline::before {
   content: ""; position: absolute; left: 8px; top: 6px; bottom: 6px; width: 2px;
-  background: linear-gradient(var(--scarlet), var(--red),var(--orange), var(--gold), var(--green), var(--green-soft), var(--blue), var(--indigo), var(--plum), var(--orchid));
+  background: linear-gradient(var(--scarlet), var(--red),var(--orange), var(--gold), var(--yellow), var(--green), var(--green-soft), var(--blue), var(--indigo), var(--plum), var(--orchid));
   border-radius: 2px;
 }
 .t-item { position: relative; padding-bottom: 2.2rem; }
@@ -423,6 +423,8 @@ main { padding-bottom: 5rem; }
 .media-tile { display: flex; flex-direction: column; }
 .media-tile .media-body { flex: 1 0 auto; }
 .media-tile audio { display: block; width: auto; margin: .1rem 1.1rem 1.2rem; }
+/* Audio player inside a card fills the width and sits below the text */
+.card audio { display: block; width: 100%; margin-top: 1.1rem; }
 .media-tile video { display: block; width: 100%; background: #000; }
 .media-more {
   display: inline-flex; align-items: center; gap: .35rem; margin-top: .7rem;
