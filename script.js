@@ -132,6 +132,111 @@
     });
   }
 
-  /* -------- 6. Footer year -------- */
+  /* -------- 6. Lightbox: view gallery images in-page (no navigation) -------- */
+  // Each .gallery becomes its own set the arrows cycle through. Clicking a
+  // thumbnail opens the shared overlay instead of following the link; the
+  // <a href> stays as a no-JS fallback.
+  var lb = document.getElementById('lightbox');
+  if (lb) {
+    var lbImg     = lb.querySelector('.lb-img');
+    var lbCaption = lb.querySelector('.lb-caption');
+    var lbCount   = lb.querySelector('.lb-count');
+    var btnClose  = lb.querySelector('.lb-close');
+    var btnPrev   = lb.querySelector('.lb-prev');
+    var btnNext   = lb.querySelector('.lb-next');
+
+    var items = [];   // current gallery: [{ src, alt, caption }]
+    var index = 0;
+    var lastFocus = null;
+
+    function render() {
+      var it = items[index];
+      if (!it) return;
+      lbImg.src = it.src;
+      lbImg.alt = it.alt || '';
+      lbCaption.textContent = it.caption || '';
+      lbCount.textContent = items.length > 1 ? (index + 1) + ' / ' + items.length : '';
+    }
+
+    function openAt(list, i) {
+      items = list;
+      index = i;
+      var single = items.length <= 1;
+      btnPrev.hidden = single;
+      btnNext.hidden = single;
+      render();
+      lb.hidden = false;
+      document.body.style.overflow = 'hidden';   // stop the page scrolling behind
+      lastFocus = document.activeElement;
+      btnClose.focus();
+    }
+
+    function close() {
+      lb.hidden = true;
+      lbImg.src = '';
+      document.body.style.overflow = '';
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    function step(dir) {
+      if (items.length < 2) return;
+      index = (index + dir + items.length) % items.length;
+      render();
+    }
+
+    // Wire every gallery on the page.
+    document.querySelectorAll('.gallery').forEach(function (gallery) {
+      var links = Array.prototype.slice.call(gallery.querySelectorAll('a'));
+      var list = links.map(function (a) {
+        var img = a.querySelector('img');
+        var cap = a.querySelector('figcaption');
+        return {
+          src: a.getAttribute('href'),
+          alt: img ? img.alt : '',
+          caption: cap ? cap.textContent : (img ? img.alt : '')
+        };
+      });
+      links.forEach(function (a, i) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          openAt(list, i);
+        });
+      });
+    });
+
+    btnClose.addEventListener('click', close);
+    btnPrev.addEventListener('click', function () { step(-1); });
+    btnNext.addEventListener('click', function () { step(1); });
+    // Click the darkened backdrop (but not the image or buttons) to close.
+    lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+    // Keyboard: Esc closes, arrows navigate.
+    document.addEventListener('keydown', function (e) {
+      if (lb.hidden) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowRight') step(1);
+      else if (e.key === 'ArrowLeft') step(-1);
+    });
+
+    // Touch: horizontal swipe navigates, a quick tap on the backdrop closes.
+    var touchX = 0, touchY = 0, touchTime = 0;
+    lb.addEventListener('touchstart', function (e) {
+      var t = e.changedTouches[0];
+      touchX = t.clientX; touchY = t.clientY; touchTime = e.timeStamp;
+    }, { passive: true });
+    lb.addEventListener('touchend', function (e) {
+      var t = e.changedTouches[0];
+      var dx = t.clientX - touchX;
+      var dy = t.clientY - touchY;
+      // Mostly-horizontal, far enough, and quick enough to count as a swipe.
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+        step(dx < 0 ? 1 : -1);   // swipe left -> next, swipe right -> prev
+      } else if (Math.abs(dx) < 10 && Math.abs(dy) < 10 && (e.timeStamp - touchTime) < 300
+                 && e.target === lb) {
+        close();                 // a tap on the backdrop (not the image) closes
+      }
+    }, { passive: true });
+  }
+
+  /* -------- 7. Footer year -------- */
   document.getElementById('year').textContent = new Date().getFullYear();
 })();

@@ -670,6 +670,27 @@
     </div>
   </footer>
 
+  <!-- ==================================================================== -->
+  <!-- =========================  LIGHTBOX (galleries)  ==================== -->
+  <!-- ==================================================================== -->
+  <!-- Shared overlay reused by every .gallery; opened/driven by script.js. -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+    <button class="lb-btn lb-close" type="button" aria-label="Close (Esc)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <button class="lb-btn lb-prev" type="button" aria-label="Previous image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+    </button>
+    <figure class="lb-stage">
+      <img class="lb-img" src="" alt="" />
+      <figcaption class="lb-caption"></figcaption>
+    </figure>
+    <button class="lb-btn lb-next" type="button" aria-label="Next image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+    <div class="lb-count" aria-hidden="true"></div>
+  </div>
+
   <!-- Behavior lives in script.js (deferred so the DOM is ready) -->
   <script src="script.js" defer></script>
 </body>
