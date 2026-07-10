@@ -105,32 +105,30 @@
     try { history.replaceState(null, '', '#' + initialTab); } catch (e) {}
   }
 
-  /* -------- 5. Data Science cards: click the whole card -> its first link -------- */
-  // Each card's first .card-links anchor is the "primary" one (usually the
-  // Analysis). A click anywhere on the card opens it, but clicks on an actual
-  // link (or a text selection) fall through so the other links still work.
-  var dataPanel = document.getElementById('tab-data');
-  if (dataPanel) {
-    dataPanel.querySelectorAll('.card').forEach(function (card) {
-      var primary = card.querySelector('.card-links a');
-      if (!primary) return;
+  /* -------- 5. Data Science & Website cards: click the whole card -> its first link -------- */
+  // Each card's first .card-links anchor is the "primary" one (the Analysis for
+  // data projects, the Live site/app for websites). A click anywhere on the card
+  // opens it, but clicks on an actual link (or a text selection) fall through so
+  // any other links still work.
+  document.querySelectorAll('#tab-data .card, #tab-web .card').forEach(function (card) {
+    var primary = card.querySelector('.card-links a');
+    if (!primary) return;
 
-      card.addEventListener('click', function (e) {
-        // Ignore clicks that landed on any real link inside the card.
-        if (e.target.closest('a')) return;
-        // Ignore if the user was selecting text rather than clicking.
-        var sel = window.getSelection && window.getSelection();
-        if (sel && sel.toString().length) return;
+    card.addEventListener('click', function (e) {
+      // Ignore clicks that landed on any real link inside the card.
+      if (e.target.closest('a')) return;
+      // Ignore if the user was selecting text rather than clicking.
+      var sel = window.getSelection && window.getSelection();
+      if (sel && sel.toString().length) return;
 
-        // Open the primary link, honoring its target (new tab vs same tab).
-        if (primary.target === '_blank') {
-          window.open(primary.href, '_blank', 'noopener');
-        } else {
-          window.location.href = primary.href;
-        }
-      });
+      // Open the primary link, honoring its target (new tab vs same tab).
+      if (primary.target === '_blank') {
+        window.open(primary.href, '_blank', 'noopener');
+      } else {
+        window.location.href = primary.href;
+      }
     });
-  }
+  });
 
   /* -------- 6. Lightbox: view gallery images in-page (no navigation) -------- */
   // Each .gallery becomes its own set the arrows cycle through. Clicking a
