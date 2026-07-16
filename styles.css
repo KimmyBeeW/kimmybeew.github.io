@@ -138,8 +138,12 @@ header.site-header {
 }
 
 .nav-brand {
+  /* Rendered as a <button> for keyboard access — reset the native chrome. */
+  appearance: none; border: 0; background: transparent; padding: 0;
+  color: inherit; font-family: inherit;
   font-weight: 800; font-size: 1.15rem; letter-spacing: -.02em;
   display: flex; align-items: center; gap: .55rem; white-space: nowrap;
+  cursor: pointer;   /* click (or Enter/Space) to jump back to the top of the page */
 }
 .nav-brand .dot {
   width: 26px; height: 26px; border-radius: 8px; flex: none;

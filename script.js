@@ -62,6 +62,25 @@
     storeSet(STORAGE_TAB, name);
   }
 
+  // Both snap instantly (behavior:'instant' overrides the page's smooth
+  // scroll-behavior) rather than animating a long scroll from the bottom.
+
+  // Very top of the page — used when clicking the brand/logo.
+  function scrollToPageTop() {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }
+
+  // Top of the panel content, tucked just under the sticky header — used when
+  // switching tabs, so the hero scrolls away and the section starts at the top.
+  function scrollToPanelTop() {
+    var header = document.querySelector('.site-header');
+    var main = document.querySelector('main');
+    if (!main) { scrollToPageTop(); return; }
+    var headerH = header ? header.offsetHeight : 0;
+    var y = main.getBoundingClientRect().top + window.pageYOffset - headerH;
+    window.scrollTo({ top: Math.max(0, y), left: 0, behavior: 'instant' });
+  }
+
   // Navigate to a tab by updating the URL hash. Writing the hash makes the
   // tab shareable/bookmarkable and creates a history entry, so the browser
   // Back button steps between tabs. The hashchange handler does the DOM work.
@@ -69,6 +88,7 @@
     var target = resolveTab(name) || 'data';
     if (('#' + target) === window.location.hash) {
       applyTab(target);              // same hash -> no hashchange fires, apply directly
+      scrollToPanelTop();
     } else {
       window.location.hash = target; // triggers the hashchange handler below
     }
@@ -77,8 +97,12 @@
   // React to hash changes: tab-button clicks, shared links, and Back/Forward.
   window.addEventListener('hashchange', function () {
     var name = tabFromHash();
-    if (name) applyTab(name);
+    if (name) { applyTab(name); scrollToPanelTop(); }
   });
+
+  // Clicking the brand (dot or name) scrolls to the very top, keeping the tab.
+  var brand = document.querySelector('.nav-brand');
+  if (brand) brand.addEventListener('click', scrollToPageTop);
 
   // Tab buttons drive navigation through the hash.
   tabButtons.forEach(function (btn) {
