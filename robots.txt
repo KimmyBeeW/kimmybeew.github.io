@@ -2,11 +2,17 @@
 # EXPLICIT DENIAL OF CONSENT FOR GENERAL SCRAPING & AI TRAINING
 # ====================================================================
 
-# Block Meta's AI training and data harvesting crawlers
+# Block Meta/Facebook's AI training, data harvesting, and general crawlers
 User-agent: Meta-ExternalAgent
 Disallow: /
 
 User-agent: Meta-ExternalFetcher
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Facebot
 Disallow: /
 
 # Block Apple's AI and scraping bot (keeps search indexing)
@@ -35,11 +41,9 @@ Disallow: /
 # ALLOWED FOR LINK PREVIEWS & SEARCH INDEXING ONLY
 # ====================================================================
 
-# Allow Facebook/LinkedIn/Twitter to fetch Open Graph metadata for previews
-User-agent: facebookexternalhit
-Allow: /
+# Allow Facebook/LinkedIn/Twitter to fetch Open Graph metadata for previews.
 
-User-agent: Facebot
+User-agent: facebookexternalhit
 Allow: /
 
 User-agent: LinkedInBot
@@ -51,3 +55,9 @@ Allow: /
 # ====================================================================
 # STUDENTS PRACTICING WEB SCRAPING ALLOWED, BUT SET A RATE OR TIME LIMIT
 # ====================================================================
+
+# Everyone else (search engines, students practicing scraping, misc. bots):
+# allowed, but please crawl gently — wait 5 seconds between requests.
+User-agent: *
+Allow: /
+Crawl-delay: 5
