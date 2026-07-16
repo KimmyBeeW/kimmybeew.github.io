@@ -1,0 +1,53 @@
+# ====================================================================
+# EXPLICIT DENIAL OF CONSENT FOR GENERAL SCRAPING & AI TRAINING
+# ====================================================================
+
+# Block Meta's AI training and data harvesting crawlers
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: Meta-ExternalFetcher
+Disallow: /
+
+# Block Apple's AI and scraping bot (keeps search indexing)
+User-agent: Applebot-Extended
+Disallow: /
+
+# Block Common Crawl (the massive repository used by almost all AI training)
+User-agent: CCBot
+Disallow: /
+
+# Block Google's AI training bot (retains Google search visibility)
+User-agent: Google-Extended
+Disallow: /
+
+# Block OpenAI's crawlers
+User-agent: GPTBot
+Disallow: /
+User-agent: ChatGPT-User
+Disallow: /
+
+# Block Claude / Anthropic
+User-agent: ClaudeBot
+Disallow: /
+
+# ====================================================================
+# ALLOWED FOR LINK PREVIEWS & SEARCH INDEXING ONLY
+# ====================================================================
+
+# Allow Facebook/LinkedIn/Twitter to fetch Open Graph metadata for previews
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Facebot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# ====================================================================
+# STUDENTS PRACTICING WEB SCRAPING ALLOWED, BUT SET A RATE OR TIME LIMIT
+# ====================================================================
