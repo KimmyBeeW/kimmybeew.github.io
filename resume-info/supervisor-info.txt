@@ -12,7 +12,8 @@ CS 111 TA Supervisor:
 - Assistant Professor
 - 2256 TMCB
 - Office Hours: Schedule using calendly at: calendly.com/byu-cs-tstephen/office-hours
-- tstephen@cs.byu.edu
+- email: tstephen@cs.byu.edu
+- Dept. phone: 801-422-3027
 
 CoE RA Supervisor:
 - Dr. Derek Hansen
